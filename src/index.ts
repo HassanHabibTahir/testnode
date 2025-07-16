@@ -14,8 +14,8 @@ app.use(cors());
 app.use(express.json({ limit: "1gb" }));
 app.use(fileUpload());
 app.use(express.urlencoded({ extended: false }));
-// app.use("/api/user", user);
-// app.use("/api/auth",auth)
+app.use("/api/user", user);
+app.use("/api/auth",auth)
 app.get("/", (req: Request, res: Response) => {
   return res.send("It's working 🙌");
 });
@@ -25,6 +25,7 @@ const startServer = async () => {
    const server =  app.listen(PORT, () => {
       console.log(`Server is running on PORT ${PORT}`);
     });
+
   } catch (error) {
     console.error("Failed to connect to the database:", error.message);
     process.exit(1); 
