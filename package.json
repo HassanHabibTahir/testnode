@@ -8,7 +8,7 @@
     "watch": "tsc -w",
     "server": "nodemon dist/index.js",
     "dev": "concurrently \"npm run watch\" \"npm run server\"",
-     "build": "tsc",
+    "build": "tsc",
     "vercel-build": "npm run build"
   },
   "keywords": [],

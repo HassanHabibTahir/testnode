@@ -5,7 +5,7 @@ import cors from "cors";
 import auth from "./routes/auth";
 import user from "./routes/user"
 
-// import { connectToDatabase } from "./config/database";
+import { connectToDatabase } from "./config/database";
 const app: Application = express();
 const PORT = process.env.PORT || 8000;
 
@@ -21,7 +21,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 const startServer = async () => {
   try {
-    // await connectToDatabase();
+    await connectToDatabase();
    const server =  app.listen(PORT, () => {
       console.log(`Server is running on PORT ${PORT}`);
     });
