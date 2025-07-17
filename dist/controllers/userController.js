@@ -52,6 +52,7 @@ exports.updateProfile = updateProfile;
 const changePassword = async (req, res) => {
     try {
         const { currentPassword, newPassword } = req.body;
+        console.log(currentPassword, newPassword, "currentPassword, newPassword ");
         const user = await user_1.User.findByPk(req.user?.id, {
             attributes: ["id", "password"],
         });
@@ -60,8 +61,10 @@ const changePassword = async (req, res) => {
         const isMatch = await bcryptjs_1.default.compare(currentPassword, user.password);
         if (!isMatch)
             return res.status(400).json({ error: "Current password is incorrect" });
+        console.log(isMatch, "isMatch");
         const hashedPassword = await bcryptjs_1.default.hash(newPassword, 10);
-        await user.update({ password: hashedPassword });
+        console.log(hashedPassword, "hasedpassword");
+        // await user.update({ password: hashedPassword });
         res.json({ message: "Password changed successfully" });
     }
     catch (error) {
