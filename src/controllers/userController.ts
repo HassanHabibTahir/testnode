@@ -21,10 +21,9 @@ export const updateProfile = async (req: any, res: Response) => {
     if (!id) return res.status(400).json({ error: "User ID not found in token." });
     const user = await User.findByPk(id);
     if (!user) return res.status(404).json({ error: "User not found." });
-
-    const { firstName, lastName, address, phone, username } = req.body;
-    if (firstName !== undefined) user.firstname = firstName;
-    if (lastName !== undefined) user.lastname = lastName;
+    const { firstname, lastname, address, phone, username } = req.body;
+    if (firstname !== undefined) user.firstname = firstname;
+    if (lastname !== undefined) user.lastname = lastname;
     if (address !== undefined) user.address = address;
     if (phone !== undefined) user.phone = phone;
     if (username !== undefined) user.username = username;
