@@ -25,6 +25,7 @@
   "dependencies": {
     "@prisma/client": "^5.19.1",
     "@types/cors": "^2.8.17",
+    "node-fetch": "^3.3.2",
     "@types/express-fileupload": "^1.5.1",
     "bcryptjs": "^2.4.3",
     "concurrently": "^9.0.1",
