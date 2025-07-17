@@ -7,7 +7,6 @@ export const getProfile = async (req: any, res: Response) => {
   try {
     const id = req.user?.id;
     if (!id) return res.status(400).json({ error: "User ID not found in token." });
-
     const user = await User.findByPk(id);
     res.json(user);
   } catch (error: any) {
@@ -20,7 +19,6 @@ export const updateProfile = async (req: any, res: Response) => {
   try {
     const id = req.user?.id;
     if (!id) return res.status(400).json({ error: "User ID not found in token." });
-
     const user = await User.findByPk(id);
     if (!user) return res.status(404).json({ error: "User not found." });
 

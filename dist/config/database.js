@@ -20,10 +20,11 @@ const { DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DATABASE_URL } = proces
 // });
 exports.sequelize = new sequelize_1.Sequelize(DATABASE_URL, {
     dialect: 'postgres',
+    dialectModule: require('pg'), // ✅ explicitly add this
     dialectOptions: {
         ssl: {
             require: true,
-            rejectUnauthorized: false,
+            rejectUnauthorized: false, // ✅ for self-signed SSLs (like Neon or some Render DBs)
         },
     },
     logging: false,

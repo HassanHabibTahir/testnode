@@ -44,6 +44,9 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   const { email, password } = req.body;
   try {
+  if(!email || !password){
+    return res.status(401).json({message:"Please enter Email and Password"})
+  }
     const user = await User.findOne({ where: { email } });
     if (!user) return res.status(404).json({ error: 'User not found' });
 
@@ -54,6 +57,6 @@ export const login = async (req, res) => {
     res.json({ token, user: { id: user.id, email: user.email, name: user.username } });
   } catch (error) {
     console.error('Login error:', error);
-    res.status(500).json({ error: 'Login failed' });
+    res.status(500).json({ error: error.message });
   }
 };
